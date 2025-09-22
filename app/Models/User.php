@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type',
+        'phone_number',
+        'status'
     ];
 
     /**
@@ -32,6 +35,24 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function isEmployee()
+    {
+        return $this->type === 'employee';
+    }
+    public function isOwner()
+    {
+        return $this->type === 'owner';
+    }
+    public function isDev()
+    {
+        return $this->type === 'dev';
+    }
+    public function isActive()
+    {
+        return $this->status === 'active';
+    }
+
 
     /**
      * The attributes that should be cast.
